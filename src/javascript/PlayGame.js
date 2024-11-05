@@ -12,7 +12,7 @@ export default class PlayGame {
   ])
 
   constructor() {
-    this.humanChoice()
+    this.#humanChoice()
   }
 
   #getComputerChoice() {
@@ -20,10 +20,10 @@ export default class PlayGame {
   }
 
   static useless() {
-    console.log('statik')
+    console.log('static from PlayGame class')
   }
 
-  humanChoice() {
+  #humanChoice() {
     const humanChoices = document.querySelectorAll(this.#selectors.get('humanSelection'))
 
     humanChoices.forEach((choice) => {
@@ -34,7 +34,7 @@ export default class PlayGame {
 
           console.log(`Human: ${humanSelection}, Computer: ${computerSelection}`)
 
-          this.playRound(humanSelection, computerSelection)
+          this.#playRound(humanSelection, computerSelection)
         } catch (error) {
           console.warn(error)
         }
@@ -42,7 +42,7 @@ export default class PlayGame {
     })
   }
 
-  playRound(humanSelection, computerSelection) {
+  #playRound(humanSelection, computerSelection) {
     if (humanSelection === computerSelection) {
       document.querySelector(this.#selectors.get('result')).textContent = "It's a tie!"
       return
